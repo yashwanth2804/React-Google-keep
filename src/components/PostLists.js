@@ -22,7 +22,7 @@ const PostLists = ({ PostlstProp ,handlePOstDelFun}) => {
             
             <div className={cls} style={pStyle}  >
                         <div className="card-content white-text">
-                            <span className="card-title">{post.titleis}</span>
+                            <span className="card-title"  style={{fontWeight: 'bold'  }} >{post.titleis}</span>
                             <p   style={{wordWrap: 'break-word'}} >
                                 {post.contentis}
                             </p>
