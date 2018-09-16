@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PostColor from './PostColor';
 
 export default class PostTitle extends Component {
- 
-  render() {
+ render() {
     return (
      
       <div className="row">
@@ -25,9 +24,5 @@ export default class PostTitle extends Component {
       </div>
        
     );
-
-      
-     
-
   }
 }
