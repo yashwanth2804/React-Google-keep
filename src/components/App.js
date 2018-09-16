@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
 import PostCard from './PostCard';
@@ -13,15 +12,13 @@ class App extends Component {
   }
   
   render() {
-    
-  
-    return (
+     return (
       <div className="container">
        
-      <PostCard postState = {this.state.notes} addPostFun= {this.handlePostAdd} />
-        <PostList PostlstProp={this.state.notes} handlePOstDelFun={this.handlePOstDel}/>
-
-      </div>
+        <PostCard postState = {this.state.notes} addPostFun= {this.handlePostAdd} />
+        <PostList PostlstProp={this.state.notes} handlePOstDelFun={this.handlePOstDel}
+   handlePOstEditFun={this.handlePOstEdit}/>
+     </div>
       
     );
   }
@@ -39,22 +36,37 @@ class App extends Component {
       
   }
 
+  handlePOstEdit = (e,val,typeis) =>{
+   
+    const notesList =[...this.state.notes] ;
+    if(typeis === "contentis"){
+      
+      const index = notesList.findIndex( note => note.id === e );
+      notesList[index].contentis = val;
+     
+    }else{
+      const index = notesList.findIndex( note => note.id === e );
+      notesList[index].titleis = val;
+    }
+    this.setState({
+      notes:notesList
+    });
+ 
+  }
+  
+
   handlePOstDel = (e) =>{
     console.log("*******dele************");
     console.log(e);
     const notes = this.state.notes.filter( post =>{
-
-      return e !== post.id;
+return e !== post.id;
 
     } );
 
     this.setState({
       notes
     });
-
-
   }
-
 }
 
 export default App;
