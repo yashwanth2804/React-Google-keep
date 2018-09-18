@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostLists = ({ PostlstProp ,handlePOstDelFun}) => {
+const PostLists = ({ PostlstProp ,handlePOstDelFun,handlePOstEditFun}) => {
 
     console.log(PostlstProp);
     
@@ -18,17 +18,18 @@ const PostLists = ({ PostlstProp ,handlePOstDelFun}) => {
             <div key={post.id}>
                 <span key={'rowid' + post.id} >
                    
-            
-            
+             
             <div className={cls} style={pStyle}  >
                         <div className="card-content white-text">
-                            <span className="card-title"  style={{fontWeight: 'bold'  }} >{post.titleis}</span>
+                            <span className="card-title"  style={{fontWeight: 'bold'  }} > <input type="text" onChange={ (e) => { handlePOstEditFun(post.id,e.target.value,"titleis")} }  defaultValue={post.titleis} /></span>
                             <p   style={{wordWrap: 'break-word'}} >
-                                {post.contentis}
+                              
+                                
+                               <textarea onChange={ (e) => { handlePOstEditFun(post.id,e.target.value,"contentis")} }  defaultValue={post.contentis}></textarea>
                             </p>
                         </div>
                         <div className="card-action">
-                             <button className="btn btn-sm">Edit</button>
+                            
                              <button onClick={ () => { handlePOstDelFun(post.id)} } className="btn waves-effect waves-light red btn-sm">Delete</button>
                         </div>
                     </div>

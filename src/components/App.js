@@ -18,12 +18,37 @@ class App extends Component {
     return (
       <div className="container">
        
-      <PostCard postState = {this.state.notes} addPostFun= {this.handlePostAdd} />
-        <PostList PostlstProp={this.state.notes} handlePOstDelFun={this.handlePOstDel}/>
+      <PostCard  addPostFun= {this.handlePostAdd} />
+        <PostList  showStateFun={this.showState} handleonEditFun={this.handleonEdit} PostlstProp={this.state.notes} handlePOstDelFun={this.handlePOstDel} handlePOstEditFun = {this.handlePOstEdit}/>
 
       </div>
       
     );
+  }
+
+  showState= (e) =>{
+    console.log(this.state);
+  }
+
+ 
+  
+
+  handlePOstEdit = (e,val,typeis) =>{
+   
+    const notesList =[...this.state.notes] ;
+    if(typeis === "contentis"){
+      
+      const index = notesList.findIndex( note => note.id === e );
+      notesList[index].contentis = val;
+     
+    }else{
+      const index = notesList.findIndex( note => note.id === e );
+      notesList[index].titleis = val;
+    }
+    this.setState({
+      notes:notesList
+    });
+ 
   }
 
   handlePostAdd = (e) =>{
